@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://1pqttcncunn0"]
+
+[ext_resource type="ArrayMesh" uid="uid://dnc5d3wk52u7j" path="res://Art/auto_meshes/Cube_007.res" id="1_yi23e"]
+[ext_resource type="ArrayMesh" uid="uid://faviqnahqw4y" path="res://Art/auto_meshes/Cylinder_028.res" id="2_u41r7"]
+[ext_resource type="ArrayMesh" uid="uid://dxu0hal544rql" path="res://Art/auto_meshes/Cylinder_027.res" id="3_aky6y"]
+[ext_resource type="ArrayMesh" uid="uid://cyamd68dlu2pb" path="res://Art/auto_meshes/Cylinder_026.res" id="4_aqss3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yi23e"]
+size = Vector3(2.25171, 1.50854, 3.26929)
+
+[node name="Car" type="Node3D"]
+
+[node name="VehicleBody3D" type="VehicleBody3D" parent="."]
+engine_force = 333.91
+brake = 24.45
+steering = 0.292343
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("1_yi23e")
+
+[node name="FR" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.91, -0.738473, -0.364482)
+brake = 24.45
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/FR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("2_u41r7")
+
+[node name="FL" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.91, -0.738, -0.364596)
+brake = 24.45
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/FL"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("3_aky6y")
+
+[node name="RR" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.91, -0.738473, 1.01207)
+brake = 24.45
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/RR"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("4_aqss3")
+
+[node name="RL" type="VehicleWheel3D" parent="VehicleBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.91, -0.738, 1.0124)
+brake = 24.45
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/RL"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("3_aky6y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010376, 0.0118408, -0.000610352)
+shape = SubResource("BoxShape3D_yi23e")

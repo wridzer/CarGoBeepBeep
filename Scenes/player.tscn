@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpm8knmsg21r8"]
+
+[ext_resource type="PackedScene" uid="uid://1pqttcncunn0" path="res://Scenes/car.tscn" id="1_v0iea"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_v0iea"]
+
+[node name="Player" type="Node3D"]
+
+[node name="Car" parent="." instance=ExtResource("1_v0iea")]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 2.26267e-08, 0.965926, -0.258819, 8.44439e-08, -0.258819, -0.965926, 0, 1.65375, 4.04237)
+shape = SubResource("SeparationRayShape3D_v0iea")
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(-1, 2.81799e-08, -6.23479e-08, 1.40863e-08, 0.999657, -0.0261771, 6.30444e-08, -0.0261771, -0.999657, 0, 0, 0)
