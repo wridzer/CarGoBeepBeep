@@ -1,56 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://1pqttcncunn0"]
+[gd_scene load_steps=7 format=3 uid="uid://1pqttcncunn0"]
 
+[ext_resource type="Script" uid="uid://cgwcpyvhmcmag" path="res://Scripts/car_controller.gd" id="1_u41r7"]
 [ext_resource type="ArrayMesh" uid="uid://dnc5d3wk52u7j" path="res://Art/auto_meshes/Cube_007.res" id="1_yi23e"]
 [ext_resource type="ArrayMesh" uid="uid://faviqnahqw4y" path="res://Art/auto_meshes/Cylinder_028.res" id="2_u41r7"]
 [ext_resource type="ArrayMesh" uid="uid://dxu0hal544rql" path="res://Art/auto_meshes/Cylinder_027.res" id="3_aky6y"]
 [ext_resource type="ArrayMesh" uid="uid://cyamd68dlu2pb" path="res://Art/auto_meshes/Cylinder_026.res" id="4_aqss3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yi23e"]
-size = Vector3(2.25171, 1.50854, 3.26929)
+size = Vector3(2.25171, 1.50735, 3.26929)
 
-[node name="Car" type="Node3D"]
+[node name="Car" type="VehicleBody3D"]
+script = ExtResource("1_u41r7")
 
-[node name="VehicleBody3D" type="VehicleBody3D" parent="."]
-engine_force = 333.91
-brake = 24.45
-steering = 0.292343
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("1_yi23e")
 
-[node name="FR" type="VehicleWheel3D" parent="VehicleBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.91, -0.738473, -0.364482)
-brake = 24.45
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0104807, 0.0181846, -0.000616968)
+shape = SubResource("BoxShape3D_yi23e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/FR"]
+[node name="FR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.91, -0.742204, -0.364482)
+use_as_steering = true
+wheel_radius = 0.295
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FR"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("2_u41r7")
 
-[node name="FL" type="VehicleWheel3D" parent="VehicleBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.91, -0.738, -0.364596)
-brake = 24.45
+[node name="FL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.91, -0.741731, -0.364596)
+use_as_steering = true
+wheel_radius = 0.295
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/FL"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FL"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("3_aky6y")
 
-[node name="RR" type="VehicleWheel3D" parent="VehicleBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.91, -0.738473, 1.01207)
-brake = 24.45
+[node name="RR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.91, -0.742204, 1.01207)
+use_as_traction = true
+wheel_radius = 0.295
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/RR"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RR"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("4_aqss3")
 
-[node name="RL" type="VehicleWheel3D" parent="VehicleBody3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.91, -0.738, 1.0124)
-brake = 24.45
+[node name="RL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.91, -0.741731, 1.0124)
+use_as_traction = true
+wheel_radius = 0.295
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleBody3D/RL"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RL"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("3_aky6y")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.010376, 0.0118408, -0.000610352)
-shape = SubResource("BoxShape3D_yi23e")

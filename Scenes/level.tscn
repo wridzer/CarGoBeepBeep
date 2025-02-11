@@ -1,22 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://5nllb4vf3d6n"]
+[gd_scene load_steps=2 format=3 uid="uid://5nllb4vf3d6n"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51e2h"]
-albedo_color = Color(0.247059, 0.462745, 0.247059, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_51e2h"]
-material = SubResource("StandardMaterial3D_51e2h")
-
-[sub_resource type="HeightMapShape3D" id="HeightMapShape3D_51e2h"]
+[ext_resource type="Material" uid="uid://c7lf4x46ewesy" path="res://Art/grid_material.tres" id="1_tumq0"]
 
 [node name="Level" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -0.01, 0)
-mesh = SubResource("PlaneMesh_51e2h")
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+use_collision = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0.0002, 0)
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+size = Vector3(15, 0.1, 15)
+material = ExtResource("1_tumq0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -0.01, 0)
-shape = SubResource("HeightMapShape3D_51e2h")
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89414, 0.305529, -3)
+size = Vector3(0.338379, 1, 1)
+material = ExtResource("1_tumq0")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.89414, 0.305529, -5.80661)
+size = Vector3(0.338379, 1, 1)
+material = ExtResource("1_tumq0")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0539994, 0.565633, -3.1579)
+size = Vector3(1.84399, 1.76611, 0.297852)
+material = ExtResource("1_tumq0")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0420656, 0.639357, -3.19826)
+operation = 2
+radius = 0.727539
+height = 0.807617
+sides = 16
+material = ExtResource("1_tumq0")
